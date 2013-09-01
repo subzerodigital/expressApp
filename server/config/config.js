@@ -4,5 +4,11 @@ module.exports = {
     name: 'server'
   },
   port: 3000,
-  db: 'mongodb://localhost/users'
+  db: 'mongodb://localhost/users',
+  mysql:{
+       host: 'localhost',
+       user: 'web',
+       password: 'password'
+  }
+
 };

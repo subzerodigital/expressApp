@@ -1,0 +1,24 @@
+<div class="page-header container">
+    <h1>Log in <small>all start from here</small></h1>
+</div>
+<div class="container">
+    <!--
+    <form role="form" action="/loginPost" method="post" id="loginForm" data-action-url="/loginAjax">
+        <label>user name<input type="text" name="userName" id="userName" /> </label>
+        <label>pass word<input type="password" name="passWord" id="passWord" /></label>
+        <input type="submit" value="login" />
+    </form>
+    -->
+
+    <form role="form" action="/loginPost" method="post" id="loginForm" data-action-url="/loginAjax">
+        <div class="form-group">
+            <label for="exampleInputEmail1">User name</label>
+            <input type="text" class="form-control" id="userName" name="userName" placeholder="User name">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>

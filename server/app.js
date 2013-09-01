@@ -1,9 +1,13 @@
 var express = require('express'),
   mongoose = require('mongoose'),
   fs = require('fs'),
-  config = require('./config/config');
+  config = require('./config/config'),
+  filters = require('./app/filter/filters');
 
-mongoose.connect(config.db);
+
+//mongo db connections:
+
+//mongoose.connect(config.db);
 var db = mongoose.connection;
 db.on('error', function () {
   throw new Error('unable to connect to database at ' + config.db);
@@ -20,7 +24,21 @@ fs.readdirSync(modelsPath).forEach(function (file) {
   }
 });
 
+
+
 var app = express();
+
+//use cookie parser
+app.use(express.cookieParser('Temp cookie passphrase'));
+//use global filter
+app.use(filters.globalFilter);
+//use basic authentication
+//app.use(express.basicAuth('user','pass'));
+app.use(express.bodyParser());
+app.use(express.session({secret:"This is my secret"}));
+
+
+
 
 require('./config/express')(app, config);
 require('./config/routes')(app);
