@@ -18,7 +18,7 @@ exports.showEmployee = function(req, res){
                    res.json(rows[0]);
                    res.cookie('respCookie','1234');
                }else{
-                   res.json(rows[0]);
+
                }
            },
            html:function(){
