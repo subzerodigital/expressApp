@@ -3,3 +3,4 @@ server/node_modules/
 node_modules/
 */node_modlues/
 server/.idea/
+.DS_Store
