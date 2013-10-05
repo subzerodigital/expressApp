@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>02AAED71-F31F-4FC0-88E4-3F13525E7472</string>
+	<key>IDESourceControlProjectName</key>
+	<string>copsNotes</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BFA87CF1-C29C-4132-BB8D-E6D4D0848C48</key>
+		<string>https://github.com/subzerodigital/expressApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>client/copsNotes/platforms/ios/copsNotes.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BFA87CF1-C29C-4132-BB8D-E6D4D0848C48</key>
+		<string>../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/subzerodigital/expressApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BFA87CF1-C29C-4132-BB8D-E6D4D0848C48</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BFA87CF1-C29C-4132-BB8D-E6D4D0848C48</string>
+			<key>IDESourceControlWCCName</key>
+			<string>expressApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
