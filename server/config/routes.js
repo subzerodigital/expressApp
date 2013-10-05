@@ -2,7 +2,10 @@ var filters = require('../app/filter/filters');
 
 module.exports = function(app){
 
-	//home route obj
+    //client
+    var client = require('../app/controllers/client');
+
+	//management
 	var home = require('../app/controllers/home');
     var uni = require('../app/controllers/uni');
     var cookie = require('../app/controllers/cookie');
@@ -11,6 +14,15 @@ module.exports = function(app){
     var session = require('../app/controllers/session');
     var register = require('../app/controllers/register');
 
+
+    /**
+     * CLIENT
+     */
+    app.get('/webapp',client.app);
+
+    /**
+     * MANAGEMENT
+     */
     //map routers
 	app.get('/', home.index);
     app.get('/uni',uni.showUni);
