@@ -11,16 +11,32 @@
         <!--all the css files goes here-->
         <!------------------------------->
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+        <!--favicon-->
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+
         <title>copsNotes</title>
     </head>
     <body>
 
         <h1 class="hidden">cops Notes - power by subzerodigital - Yinan Yang</h1>
-        <section id="sz_page"></section>
+        <section id="sz_page" class="container"></section>
+
         <!--all the templates goes here-->
-
-
-
+        <!--home page incident item view -->
+        <script type="text/template" id="incidentItem_tmpl">
+            <%= time %>
+            <%= location %>
+            <%= type %>
+            <%= comments %>
+        </script>
+        <!--home page incident composite view tmpl-->
+        <script type="text/template" id="incidentItemsContainer_tmpl">
+            <div class="homeCon">
+                <h2>recent incident</h2>
+                <ul></ul>
+            </div>
+        </script>
 
         <!------------------------------>
         <!--all the js files goes here-->
@@ -28,19 +44,22 @@
 
         <!--cordova core lib-->
         <script type="text/javascript" src="cordova.js"></script>
-        <!--js config file -->
-        <script type="text/javascript" src="js/config/appConfig.js"></script>
         <!--core libs-->
         <script type="text/javascript" src="js/vendor/jquery.js"></script>
         <script type="text/javascript" src="js/vendor/underscore.js"></script>
         <script type="text/javascript" src="js/vendor/backbone.js"></script>
+        <!--backbone extentions-->
         <script type="text/javascript" src="js/vendor/backbone.marionette.js"></script>
+        <script type="text/javascript" src="js/vendor/backbone.deep-model.js"></script>
+
+        <!--js config file -->
+        <script type="text/javascript" src="js/config/appConfig.js"></script>
+        <script type="text/javascript" src="js/util/appUtil.js"></script>
         <!--backbone / marionette mvc-->
-
-
-
-        <!--kick off-->
         <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/entities/incident.js"></script>
+        <script type="text/javascript" src="js/modules/homeList.js"></script>
+        <!--kick off-->
         <script type="text/javascript">
             sz.app.initialize();
         </script>

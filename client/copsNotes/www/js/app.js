@@ -24,11 +24,13 @@ sz.app = {
             });
         }
     },
-    // deviceready Event Handler // backbone router starts here
+    // deviceready Event Handler // app starts here
     onDeviceReady: function() {
+        copsNotes.addRegions({
+            main: "#sz_page"
+        });
         copsNotes.on("initialize:after",function(){
-            var icds = copsNotes.request("incidents:entities");
-            //console.log(icds);
+            copsNotes.Home.List.showListController();
         });
         copsNotes.start();
     }
