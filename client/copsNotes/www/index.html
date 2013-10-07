@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-    COPSNOTES APP, CREATED BY YINAN YANG - SUBZERODIGITAL
+    COPSNOTES PHONEGAP APP, CREATED BY YINAN YANG - SUBZERODIGITAL
 -->
 <html>
     <head>
@@ -17,8 +17,8 @@
 
         <h1 class="hidden">cops Notes - power by subzerodigital - Yinan Yang</h1>
         <section id="sz_page"></section>
-
         <!--all the templates goes here-->
+
 
         <!------------------------------>
         <!--all the js files goes here-->
@@ -26,16 +26,24 @@
 
         <!--cordova core lib-->
         <script type="text/javascript" src="cordova.js"></script>
-        <!--js config file -->
-        <script type="text/javascript" src="js/config/appConfig.js"></script>
         <!--core libs-->
         <script type="text/javascript" src="js/vendor/jquery.js"></script>
         <script type="text/javascript" src="js/vendor/underscore.js"></script>
         <script type="text/javascript" src="js/vendor/backbone.js"></script>
-        <!--kick off-->
+        <!--backbone extentions-->
+        <script type="text/javascript" src="js/vendor/backbone.marionette.js"></script>
+        <script type="text/javascript" src="js/vendor/backbone.deep-model.js"></script>
+
+        <!--js config file -->
+        <script type="text/javascript" src="js/config/appConfig.js"></script>
+        <script type="text/javascript" src="js/util/appUtil.js"></script>
+        <!--backbone / marionette mvc-->
         <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/entities/incident.js"></script>
+
+        <!--kick off-->
         <script type="text/javascript">
-            app.initialize();
+            sz.app.initialize();
         </script>
     </body>
 </html>
