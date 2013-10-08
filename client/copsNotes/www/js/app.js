@@ -30,7 +30,7 @@ sz.app = {
             main: "#sz_page"
         });
         copsNotes.on("initialize:after",function(){
-            copsNotes.Home.List.showListController();
+            copsNotes.Home.List.controller.showList();
         });
         copsNotes.start();
     }
