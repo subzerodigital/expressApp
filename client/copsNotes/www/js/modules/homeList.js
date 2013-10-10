@@ -4,7 +4,7 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
     List.IncidentItemView = Marionette.ItemView.extend({
 
        tagName:"li",
-       className:"incidentListItem",
+       className:"incidentListItem list-group-item row",
        template:"#incidentItem_tmpl",
 
        events:{
