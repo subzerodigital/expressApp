@@ -22,7 +22,7 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
        showIncidentDetails:function(evt){
           evt.preventDefault();
           evt.stopPropagation();
-          this.trigger("incident:showdetails");
+          this.trigger("incident:showdetails",this.model);
        },
 
        remove:function(){
@@ -32,7 +32,6 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
        }
 
     });
-
 
     //collection view
     List.IncidentsCollectionView = Marionette.CompositeView.extend({
@@ -54,12 +53,13 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
             this.collection.remove(model);
         },
         onItemviewIncidentShowdetails:function(childView,model){
-            console.log("show details - generate new page");
+            //console.log("show details - generate new page");
+            List.controller.showIncidentDetails(model);
         }
     });
 
     /**
-     * controllers
+     * controllers for
      */
 
     List.controller = {
@@ -71,7 +71,6 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
             //show the page
             copsNotes.main.show(incidentColView);
 
-
             //listen on event - can be defined in collection view
             /*
             incidentColView.on("itemview:incident:delete",function(childView, model){
@@ -79,6 +78,12 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
                 icds.remove(model);
             });
             */
+        },
+        showIncidentDetails:function(model){
+            var incidentDetailsView = new copsNotes.Incident.Detail.IncidentDetailView({
+               model:model
+            });
+            copsNotes.main.show(incidentDetailsView);
         }
     };
 
