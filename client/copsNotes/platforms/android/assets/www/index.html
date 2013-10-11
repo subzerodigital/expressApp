@@ -25,22 +25,32 @@
         <!--all the templates goes here-->
         <!--home page incident item view -->
         <script type="text/template" id="incidentItem_tmpl">
-            <%= time %>
-            <%= location %>
-            <%= type %>
-            <%= comments %>
 
-            <button type="button" class="btn btn-primary btn-xs fn-deleteItem">
-                <span class="glyphicon glyphicon-trash"></span>
-                Delete
-            </button>
+            <span class="col-lg-8">
+                <%= time %>
+                <%= location %>
+                <%= type %>
+                <%= comments %>
+            </span>
+
+            <span class="col-lg-4">
+                <button type="button" class="btn btn-primary btn-xs fn-deleteItem">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Delete
+                </button>
+
+                <button type="button" class="btn btn-primary btn-xs fn-showDetails">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                    Show details
+                </button>
+            </span>
 
         </script>
         <!--home page incident composite view tmpl-->
         <script type="text/template" id="incidentItemsContainer_tmpl">
             <div class="homeCon">
                 <h2>recent incident</h2>
-                <ul></ul>
+                <ul class="list-group"></ul>
             </div>
 
             <select>

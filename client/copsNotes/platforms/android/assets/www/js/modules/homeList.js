@@ -4,11 +4,12 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
     List.IncidentItemView = Marionette.ItemView.extend({
 
        tagName:"li",
-       className:"incidentListItem",
+       className:"incidentListItem list-group-item row",
        template:"#incidentItem_tmpl",
 
        events:{
-           "click .fn-deleteItem":"deleteItem"
+           "click .fn-deleteItem":"deleteItem",
+           "click .fn-showDetails":"showIncidentDetails"
        },
 
        deleteItem:function(evt){
@@ -18,6 +19,12 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
            this.trigger("incident:delete",this.model);
        },
 
+       showIncidentDetails:function(evt){
+          evt.preventDefault();
+          evt.stopPropagation();
+          this.trigger("incident:showdetails");
+       },
+
        remove:function(){
            this.$el.fadeOut(200,function(){
                $(this).remove();
@@ -25,6 +32,8 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
        }
 
     });
+
+
     //collection view
     List.IncidentsCollectionView = Marionette.CompositeView.extend({
 
@@ -37,12 +46,15 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
             "click":"handleClick"
         },
         handleClick:function(evt){
-            evt.preventDefault();
+            //evt.preventDefault();
             // console.log("list clicked");
         },
         onItemviewIncidentDelete:function(childView,model){
             //console.log("convention over configration");
             this.collection.remove(model);
+        },
+        onItemviewIncidentShowdetails:function(childView,model){
+            console.log("show details - generate new page");
         }
     });
 
