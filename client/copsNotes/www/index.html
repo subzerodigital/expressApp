@@ -71,6 +71,11 @@
             <p><%=location %></p>
             <p><%=type %></p>
             <p><%=comments %></p>
+
+            <a href="#incidents" type="button" class="btn btn-primary btn-xs">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                Go back
+            </a>
         </script>
 
         <!------------------------------>
@@ -86,12 +91,17 @@
         <!--backbone extentions-->
         <script type="text/javascript" src="js/vendor/backbone.marionette.js"></script>
         <script type="text/javascript" src="js/vendor/backbone.deep-model.js"></script>
+        <script type="text/javascript" src="js/vendor/backbone.localStorage.js"></script>
+
+        <!--mock data, to be removed-->
+        <script type="text/javascript" src="js/config/mock.js"></script>
 
         <!--js config file -->
         <script type="text/javascript" src="js/config/appConfig.js"></script>
         <script type="text/javascript" src="js/util/appUtil.js"></script>
         <!--backbone / marionette mvc-->
         <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/config/localStorage.js"></script>
         <script type="text/javascript" src="js/router/copsNotesRouter.js"></script>
         <script type="text/javascript" src="js/entities/incident.js"></script>
         <script type="text/javascript" src="js/modules/homeList.js"></script>

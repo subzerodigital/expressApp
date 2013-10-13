@@ -4,7 +4,8 @@ copsNotes.module("Router",function(Router,copsNotes,Backbone,Marionette,$,_){
         //marionette style router
         appRoutes:{
             "":"listIncidents",
-            "incidents":"listIncidents"
+            "incidents":"listIncidents",
+            "incidents/:id":"showIncidentDetail"
         },
         //still can use backbone standard router
         routes:{
@@ -16,6 +17,9 @@ copsNotes.module("Router",function(Router,copsNotes,Backbone,Marionette,$,_){
     var API = {
         listIncidents:function(){
             copsNotes.Home.List.controller.showList();
+        },
+        showIncidentDetail:function(id){
+            copsNotes.Home.List.controller.showIncidentDetails(id);
         }
     };
 

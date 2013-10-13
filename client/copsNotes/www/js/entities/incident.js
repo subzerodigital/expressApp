@@ -18,46 +18,53 @@ copsNotes.module("Entities",function(Entities,copsNotes,Backbone,Marionette,$,_)
            "audios":[],
            "videos":[],
            "photos":[]
-       }
+       },
+       urlRoot:"incidents"
     });
+    //config incidents to use localstorage adaptor
+    Entities.configStorage(Entities.Incident);
 
     //define incident collection
     Entities.IncidentCollection = Backbone.Collection.extend({
         model:Entities.Incident,
-        comparator:"time"
+        comparator:"time",
+        url:"incidents"
     });
 
+    //config collection to use localstorage
+    Entities.configStorage(Entities.IncidentCollection);
 
     //provide a API for outside to invoke
     var API = {
+        //get the collection
         getIncidents:function(){
-            if(incidents===undefined){
-                initIncidents();
+            var incidentsCol = new Entities.IncidentCollection();
+            incidentsCol.fetch();
+
+            //if it's empty invoke mocking data
+            if(incidentsCol.length===0){
+                console.log("mocked");
+                return Entities.mockData();
             }
-            return incidents;
+
+            return incidentsCol;
+        },
+        getIncident:function(id){
+            var incident = new Entities.Incident({id:id});
+            incident.fetch();
+            return incident;
         }
     };
 
+    // public function to mock data - excutable from console
+    Entities.mockData = function(){
+        //mock from config/mock.js
+        incidents = new Entities.IncidentCollection(mockIncidents);
+        incidents.forEach(function(incident){
+           incident.save();
+        });
 
-    var incidents;
-    //mocking data for now:
-    var initIncidents = function(){
-        incidents = new Entities.IncidentCollection([
-            {
-                time:"2013-10-07T03:32:01.189Z",
-                id:1,
-                location:"Hornsby",
-                type:"car accident",
-                comments:"this is a small car accidents"
-            },
-            {
-                time:"2013-10-08T03:32:01.189Z",
-                id:2,
-                location:"Guildford",
-                type:"car accident",
-                comments:"this is a nasty car accidents"
-            }
-        ]);
+        return incidents;
     };
 
 
@@ -65,5 +72,9 @@ copsNotes.module("Entities",function(Entities,copsNotes,Backbone,Marionette,$,_)
     copsNotes.reqres.setHandler("incidents:entities",function(){
         return API.getIncidents();
     });
+
+    copsNotes.reqres.setHandler("incident:entity",function(id){
+        return API.getIncident(id);
+    })
 
 });
