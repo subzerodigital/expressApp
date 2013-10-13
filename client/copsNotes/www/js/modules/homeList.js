@@ -8,8 +8,8 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
        template:"#incidentItem_tmpl",
 
        events:{
-           "click .fn-deleteItem":"deleteItem",
-           "click .fn-showDetails":"showIncidentDetails"
+           "click .fn-deleteItem":"deleteItem"
+           //"click .fn-showDetails":"showIncidentDetails"
        },
 
        deleteItem:function(evt){
@@ -48,14 +48,19 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
             //evt.preventDefault();
             // console.log("list clicked");
         },
+
+        //handle: incident:delete
         onItemviewIncidentDelete:function(childView,model){
             //console.log("convention over configration");
             this.collection.remove(model);
-        },
+        }
+        //handle: incident:showdetails
+        /*
         onItemviewIncidentShowdetails:function(childView,model){
             //console.log("show details - generate new page");
             List.controller.showIncidentDetails(model);
         }
+        */
     });
 
     /**
@@ -63,6 +68,7 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
      */
 
     List.controller = {
+        //render the list
         showList:function(){
             var icds = copsNotes.request("incidents:entities");
             var incidentColView = new copsNotes.Home.List.IncidentsCollectionView({
@@ -79,12 +85,19 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
             });
             */
         },
-        showIncidentDetails:function(model){
+        //show incident details
+        showIncidentDetails:function(id){
+            //create a new view
+            var icds = copsNotes.request("incidents:entities");
+            var model = icds.get(id);
+            //console.log(model);
             var incidentDetailsView = new copsNotes.Incident.Detail.IncidentDetailView({
                model:model
             });
+            //show through the regin manager
             copsNotes.main.show(incidentDetailsView);
         }
+
     };
 
     /*

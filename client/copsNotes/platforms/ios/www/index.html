@@ -25,22 +25,34 @@
         <!--all the templates goes here-->
         <!--home page incident item view -->
         <script type="text/template" id="incidentItem_tmpl">
-            <%= time %>
-            <%= location %>
-            <%= type %>
-            <%= comments %>
 
-            <button type="button" class="btn btn-primary btn-xs fn-deleteItem">
-                <span class="glyphicon glyphicon-trash"></span>
-                Delete
-            </button>
+            <span class="col-lg-8">
+                <%= time %>
+                <%= location %>
+                <%= type %>
+                <%= comments %>
+            </span>
+
+            <span class="col-lg-4">
+                <button type="button" class="btn btn-primary btn-xs fn-deleteItem">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Delete
+                </button>
+
+                <button type="button" class="btn btn-primary btn-xs fn-showDetails">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                    Show details
+                </button>
+            </span>
 
         </script>
+
+
         <!--home page incident composite view tmpl-->
         <script type="text/template" id="incidentItemsContainer_tmpl">
             <div class="homeCon">
                 <h2>recent incident</h2>
-                <ul></ul>
+                <ul class="list-group"></ul>
             </div>
 
             <select>
@@ -48,6 +60,16 @@
                 <option value="2">value</option>
                 <option value="3">value</option>
             </select>
+        </script>
+
+
+        <!--incident details view templdate-->
+        <script type="text/template" id="incidentDetailsContainer_tmpl">
+            <h2>Incident Details</h2>
+            <time><%= time %></time>
+            <p><%=location %></p>
+            <p><%=type %></p>
+            <p><%=comments %></p>
         </script>
 
         <!------------------------------>
@@ -69,8 +91,10 @@
         <script type="text/javascript" src="js/util/appUtil.js"></script>
         <!--backbone / marionette mvc-->
         <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/router/copsNotesRouter.js"></script>
         <script type="text/javascript" src="js/entities/incident.js"></script>
         <script type="text/javascript" src="js/modules/homeList.js"></script>
+        <script type="text/javascript" src="js/modules/incidentDetails.js"></script>
         <!--kick off-->
         <script type="text/javascript">
             sz.app.initialize();

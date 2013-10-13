@@ -46,6 +46,8 @@
             </span>
 
         </script>
+
+
         <!--home page incident composite view tmpl-->
         <script type="text/template" id="incidentItemsContainer_tmpl">
             <div class="homeCon">
@@ -58,6 +60,16 @@
                 <option value="2">value</option>
                 <option value="3">value</option>
             </select>
+        </script>
+
+
+        <!--incident details view templdate-->
+        <script type="text/template" id="incidentDetailsContainer_tmpl">
+            <h2>Incident Details</h2>
+            <time><%= time %></time>
+            <p><%=location %></p>
+            <p><%=type %></p>
+            <p><%=comments %></p>
         </script>
 
         <!------------------------------>
@@ -79,8 +91,10 @@
         <script type="text/javascript" src="js/util/appUtil.js"></script>
         <!--backbone / marionette mvc-->
         <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/router/copsNotesRouter.js"></script>
         <script type="text/javascript" src="js/entities/incident.js"></script>
         <script type="text/javascript" src="js/modules/homeList.js"></script>
+        <script type="text/javascript" src="js/modules/incidentDetails.js"></script>
         <!--kick off-->
         <script type="text/javascript">
             sz.app.initialize();

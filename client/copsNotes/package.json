@@ -5,7 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  }, 
+
   "author": "Yinan Yang",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies":{
+    	"grunt":"*",
+      "grunt-contrib-jshint":"*",
+      "grunt-contrib-nodeunit": "*",
+      "grunt-contrib-uglify": "*",
+      "grunt-contrib-watch": "*",
+      "grunt-contrib-concat": "*",
+      "grunt-contrib-less":"*",
+      "grunt-contrib-qunit":"*",
+      "grunt-contrib-sass":"*"
+  }
 }

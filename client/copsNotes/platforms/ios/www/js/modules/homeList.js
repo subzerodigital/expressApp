@@ -4,11 +4,12 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
     List.IncidentItemView = Marionette.ItemView.extend({
 
        tagName:"li",
-       className:"incidentListItem",
+       className:"incidentListItem list-group-item row",
        template:"#incidentItem_tmpl",
 
        events:{
-           "click .fn-deleteItem":"deleteItem"
+           "click .fn-deleteItem":"deleteItem",
+           "click .fn-showDetails":"showIncidentDetails"
        },
 
        deleteItem:function(evt){
@@ -18,6 +19,12 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
            this.trigger("incident:delete",this.model);
        },
 
+       showIncidentDetails:function(evt){
+          evt.preventDefault();
+          evt.stopPropagation();
+          this.trigger("incident:showdetails",this.model);
+       },
+
        remove:function(){
            this.$el.fadeOut(200,function(){
                $(this).remove();
@@ -25,6 +32,7 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
        }
 
     });
+
     //collection view
     List.IncidentsCollectionView = Marionette.CompositeView.extend({
 
@@ -37,20 +45,28 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
             "click":"handleClick"
         },
         handleClick:function(evt){
-            evt.preventDefault();
+            //evt.preventDefault();
             // console.log("list clicked");
         },
+
+        //handle: incident:delete
         onItemviewIncidentDelete:function(childView,model){
             //console.log("convention over configration");
             this.collection.remove(model);
+        },
+        //handle: incident:showdetails
+        onItemviewIncidentShowdetails:function(childView,model){
+            //console.log("show details - generate new page");
+            List.controller.showIncidentDetails(model);
         }
     });
 
     /**
-     * controllers
+     * controllers for
      */
 
     List.controller = {
+        //render the list
         showList:function(){
             var icds = copsNotes.request("incidents:entities");
             var incidentColView = new copsNotes.Home.List.IncidentsCollectionView({
@@ -59,7 +75,6 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
             //show the page
             copsNotes.main.show(incidentColView);
 
-
             //listen on event - can be defined in collection view
             /*
             incidentColView.on("itemview:incident:delete",function(childView, model){
@@ -67,7 +82,17 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
                 icds.remove(model);
             });
             */
+        },
+        //show incident details
+        showIncidentDetails:function(model){
+            //create a new view
+            var incidentDetailsView = new copsNotes.Incident.Detail.IncidentDetailView({
+               model:model
+            });
+            //show through the regin manager
+            copsNotes.main.show(incidentDetailsView);
         }
+
     };
 
     /*

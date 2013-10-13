@@ -26,12 +26,19 @@ sz.app = {
     },
     // deviceready Event Handler // app starts here
     onDeviceReady: function() {
+
         copsNotes.addRegions({
             main: "#sz_page"
         });
+
         copsNotes.on("initialize:after",function(){
-            copsNotes.Home.List.controller.showList();
+            if(Backbone.history){
+                //copsNotes.Home.List.controller.showList();
+                //start backbone router
+                Backbone.history.start();
+            }
         });
+
         copsNotes.start();
     }
 };
