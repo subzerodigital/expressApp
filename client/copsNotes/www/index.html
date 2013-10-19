@@ -21,9 +21,15 @@
     <body>
 
         <h1 class="hidden">cops Notes - power by subzerodigital - Yinan Yang</h1>
+        <!--main page area-->
         <section id="sz_page" class="container"></section>
+        <!--menu area-->
+        <section id="sz_menuBar" class="sz_menuBar"></section>
 
+        <!------------------------------->
         <!--all the templates goes here-->
+        <!------------------------------->
+
         <!--home page incident item view -->
         <script type="text/template" id="incidentItem_tmpl">
 
@@ -49,12 +55,20 @@
         </script>
 
 
+        <!--home page bottom menu bar view-->
+        <script type="text/template" id="homeMenu_tmpl">
+             <a href="#" id="fn-newIncident" class=""> New Incidents</a>
+             <a href="#" id="fn-showCalender" class="">Calender</a>
+             <a href="#" id="fn-showSettings" class="">Settings</a>
+        </script>
+
         <!--home page incident composite view tmpl-->
         <script type="text/template" id="incidentItemsContainer_tmpl">
             <div class="homeCon">
                 <h2>recent incident</h2>
                 <ul class="list-group"></ul>
             </div>
+
 
             <select>
                 <option value="0">select your type</option>
@@ -104,6 +118,7 @@
         <script type="text/javascript" src="js/config/localStorage.js"></script>
         <script type="text/javascript" src="js/router/copsNotesRouter.js"></script>
         <script type="text/javascript" src="js/entities/incident.js"></script>
+        <script type="text/javascript" src="js/modules/homeMenu.js"></script>
         <script type="text/javascript" src="js/modules/homeList.js"></script>
         <script type="text/javascript" src="js/modules/incidentDetails.js"></script>
         <!--kick off-->
