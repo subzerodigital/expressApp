@@ -4,7 +4,8 @@ copsNotes.module("Home.Menu",function(Menu,copsNotes,Backbone,Marionette,$,_){
 
     Menu.HomeMenuView = Marionette.ItemView.extend({
         template:"#homeMenu_tmpl",
-        tagName:"div"
+        tagName:"div",
+        className:"homeMenu"
     });
 
     /*controller*/
