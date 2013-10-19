@@ -8,8 +8,8 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
        template:"#incidentItem_tmpl",
 
        events:{
-           "click .fn-deleteItem":"deleteItem",
-           "click .fn-showDetails":"showIncidentDetails"
+           "click .fn-deleteItem":"deleteItem"
+           //"click .fn-showDetails":"showIncidentDetails"
        },
 
        deleteItem:function(evt){
@@ -52,17 +52,20 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
         //handle: incident:delete
         onItemviewIncidentDelete:function(childView,model){
             //console.log("convention over configration");
-            this.collection.remove(model);
-        },
+            //delete from local storage too
+            model.destroy();
+        }
         //handle: incident:showdetails
+        /*
         onItemviewIncidentShowdetails:function(childView,model){
             //console.log("show details - generate new page");
             List.controller.showIncidentDetails(model);
         }
+        */
     });
 
     /**
-     * controllers for
+     * controllers for showing the whole list
      */
 
     List.controller = {
@@ -84,11 +87,18 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
             */
         },
         //show incident details
-        showIncidentDetails:function(model){
+        showIncidentDetails:function(id){
             //create a new view
-            var incidentDetailsView = new copsNotes.Incident.Detail.IncidentDetailView({
-               model:model
-            });
+            var model = copsNotes.request("incident:entity",id);
+            //console.log(model);
+            if(model!==undefined){
+                var incidentDetailsView = new copsNotes.Incident.Detail.IncidentDetailView({
+                    model:model
+                });
+            }else{
+                console.log("model id doesn't exist");
+            }
+
             //show through the regin manager
             copsNotes.main.show(incidentDetailsView);
         }

@@ -16,7 +16,10 @@ copsNotes.module("Router",function(Router,copsNotes,Backbone,Marionette,$,_){
 
     var API = {
         listIncidents:function(){
+            //show the list
             copsNotes.Home.List.controller.showList();
+            //show the home page menu
+            copsNotes.Home.Menu.controller.showHomeMenu();
         },
         showIncidentDetail:function(id){
             copsNotes.Home.List.controller.showIncidentDetails(id);

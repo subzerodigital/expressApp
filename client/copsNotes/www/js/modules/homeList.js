@@ -52,7 +52,8 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
         //handle: incident:delete
         onItemviewIncidentDelete:function(childView,model){
             //console.log("convention over configration");
-            this.collection.remove(model);
+            //delete from local storage too
+            model.destroy();
         }
         //handle: incident:showdetails
         /*
@@ -64,7 +65,7 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
     });
 
     /**
-     * controllers for
+     * controllers for showing the whole list
      */
 
     List.controller = {
@@ -88,12 +89,16 @@ copsNotes.module("Home.List",function(List,copsNotes,Backbone,Marionette,$,_){
         //show incident details
         showIncidentDetails:function(id){
             //create a new view
-            var icds = copsNotes.request("incidents:entities");
-            var model = icds.get(id);
+            var model = copsNotes.request("incident:entity",id);
             //console.log(model);
-            var incidentDetailsView = new copsNotes.Incident.Detail.IncidentDetailView({
-               model:model
-            });
+            if(model!==undefined){
+                var incidentDetailsView = new copsNotes.Incident.Detail.IncidentDetailView({
+                    model:model
+                });
+            }else{
+                console.log("model id doesn't exist");
+            }
+
             //show through the regin manager
             copsNotes.main.show(incidentDetailsView);
         }

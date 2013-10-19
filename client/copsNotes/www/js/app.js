@@ -28,7 +28,8 @@ sz.app = {
     onDeviceReady: function() {
 
         copsNotes.addRegions({
-            main: "#sz_page"
+            main: "#sz_page",
+            menu: "#sz_menuBar"
         });
 
         copsNotes.on("initialize:after",function(){
