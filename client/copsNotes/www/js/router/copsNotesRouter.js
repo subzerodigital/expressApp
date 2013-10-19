@@ -5,7 +5,8 @@ copsNotes.module("Router",function(Router,copsNotes,Backbone,Marionette,$,_){
         appRoutes:{
             "":"listIncidents",
             "incidents":"listIncidents",
-            "incidents/:id":"showIncidentDetail"
+            "incidents/:id":"showIncidentDetail",
+            "editIncident/:id":"editIncident"
         },
         //still can use backbone standard router
         routes:{
@@ -23,6 +24,9 @@ copsNotes.module("Router",function(Router,copsNotes,Backbone,Marionette,$,_){
         },
         showIncidentDetail:function(id){
             copsNotes.Home.List.controller.showIncidentDetails(id);
+        },
+        editIncident:function(id){
+            copsNotes.Incident.Edit.controller.showEditPage(id);
         }
     };
 
